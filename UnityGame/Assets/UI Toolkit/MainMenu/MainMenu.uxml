@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=4330b2a325a07de4b8f62f49c9f00ad7&amp;type=3#MainMenu" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:Label text="Game Title" display-tooltip-when-elided="true" name="GameTitle" class="title" />
+        <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="button" />
+        <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="ExitGame" class="button" />
+    </ui:VisualElement>
+</ui:UXML>
