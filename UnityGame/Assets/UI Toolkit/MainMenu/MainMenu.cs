@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
         root = GetComponent<UIDocument>().rootVisualElement;
 
         Button startGame = root.Q<Button>("StartGame");
-        startGame.RegisterCallback<ClickEvent>(_ => LevelManager.Instance.LoadLevel(1));
+        startGame.RegisterCallback<ClickEvent>(_ => LevelManager.Instance.LoadLevel(1, 0));
         AddHoverSound(startGame);
 
         Button quit = root.Q<Button>("ExitGame");
