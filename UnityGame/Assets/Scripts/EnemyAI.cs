@@ -11,6 +11,7 @@ public class EnemyAI : MonoBehaviour
     private CharacterController _controller;
     private Transform _player;
     private Vector3 _velocity;
+    public float _maxDistance = 10;
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -18,16 +19,19 @@ public class EnemyAI : MonoBehaviour
     }
     void Update()
     {
-        if (_controller.isGrounded == true)
+        if (Vector3.Distance(transform.position, _player.position) < _maxDistance)
         {
-            Vector3 direction = _player.position - transform.position;
-            direction.Normalize();
-            direction.y = 0;
-            transform.localRotation = Quaternion.LookRotation(direction);
-            _velocity = direction * _speed;
+            if (_controller.isGrounded == true)
+            {
+                Vector3 direction = _player.position - transform.position;
+                direction.Normalize();
+                direction.y = 0;
+                transform.localRotation = Quaternion.LookRotation(direction);
+                _velocity = direction * _speed;
+            }
+            _velocity.y -= _gravity;
+            _controller.Move(_velocity * Time.deltaTime);
         }
-        _velocity.y -= _gravity;
-        _controller.Move(_velocity * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,10 +1,6 @@
 using StarterAssets;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using UnityEngine.InputSystem.XR;
 
 public class Climb : MonoBehaviour
 {
@@ -41,7 +37,8 @@ public class Climb : MonoBehaviour
     private void Start()
     {
         animator = playerMovement.GetComponent<Animator>();
-        rb = playerMovement.GetComponent<Rigidbody>();
+        //rb = playerMovement.GetComponent<Rigidbody>();
+        // don't really need since messing with rb didn't work anyways
     }
     private void Update()
     {
@@ -105,6 +102,10 @@ public class Climb : MonoBehaviour
     {
         isClimbing = false;
         Debug.Log("stop climb");
+
+        Vector3 direction = Vector3.zero;
+        direction.y = 0;
+        playerMovement._verticalVelocity = 0;
     }
 
     private void ClimbMovement()
@@ -119,10 +120,13 @@ public class Climb : MonoBehaviour
             direction.Normalize();
             direction.x = 0;
             direction.z = 0;
-            playerMovement._verticalVelocity = 1;
+            playerMovement._verticalVelocity = 0.2f;
         }
         playerMovement._verticalVelocity -= playerMovement.Gravity;
         playerMovement.Move();
+        isClimbing = true;
+
+        StopClimb();
     }
 
 }
