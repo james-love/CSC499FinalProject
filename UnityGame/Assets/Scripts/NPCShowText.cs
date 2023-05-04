@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NPCInteract : MonoBehaviour
+public class NPCShowText : MonoBehaviour
 {
     bool playerDetected = false; // boolean to activate NPC actions/dialogue
     public GameObject textUI; // the text that will pop up saying 'press a to talk'
