@@ -32,6 +32,7 @@ public class ShowUIOnKeyPress : MonoBehaviour
             playerNearby = false;
             panelOne.SetActive(false);
             panelTwo.SetActive(false);
+
         }
     }
 
@@ -44,6 +45,10 @@ public class ShowUIOnKeyPress : MonoBehaviour
             panelOne.SetActive(true);
             panelTwo.SetActive(true);
             Debug.Log("ui activated");
+
+            //Time.timeScale = 0;
+
+
 
 
             // not working below

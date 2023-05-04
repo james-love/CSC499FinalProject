@@ -37,4 +37,7 @@ public class AmmoCount : MonoBehaviour
     }
 
     // if button pressed, buy appropriate amount of bullets
+
+
+    
 }
