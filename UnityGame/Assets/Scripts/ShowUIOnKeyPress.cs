@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class ShowUI : MonoBehaviour
+public class ShowUIOnKeyPress : MonoBehaviour
 {
     public GameObject panelOne;
     public GameObject panelTwo;

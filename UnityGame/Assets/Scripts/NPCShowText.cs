@@ -15,7 +15,7 @@ public class NPCShowText : MonoBehaviour
 
     void Update()
     {
-        if (playerDetected && Keyboard.current.aKey.wasPressedThisFrame)
+        if (playerDetected && Keyboard.current.eKey.wasPressedThisFrame)
         {
             Debug.Log("NPC dialogue has been activated");
         }
