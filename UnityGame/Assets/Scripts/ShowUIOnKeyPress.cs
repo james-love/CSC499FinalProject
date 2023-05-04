@@ -38,7 +38,7 @@ public class ShowUIOnKeyPress : MonoBehaviour
     void Update()
     {
         // if player is next to npc + interact key pressed
-        if (Keyboard.current.fKey.wasPressedThisFrame && playerNearby)
+        if (Keyboard.current.fKey.wasPressedThisFrame && playerNearby == true)
         {
             // turn on the ui panels
             panelOne.SetActive(true);

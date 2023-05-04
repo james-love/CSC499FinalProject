@@ -113,6 +113,9 @@ namespace StarterAssets
         // counter to keep track of how many tomes have been collected
         public int tomeCounter;
 
+        // keeps track of how many bullets player has
+        [SerializeField] public int ammoCount;
+
         private bool IsCurrentDeviceMouse
         {
             get
