@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Experimental.GraphView.GraphView;
+using UnityEngine.InputSystem.XR;
 
 public class Climb : MonoBehaviour
 {
@@ -39,6 +41,7 @@ public class Climb : MonoBehaviour
     private void Start()
     {
         animator = playerMovement.GetComponent<Animator>();
+        rb = playerMovement.GetComponent<Rigidbody>();
     }
     private void Update()
     {
@@ -106,7 +109,20 @@ public class Climb : MonoBehaviour
 
     private void ClimbMovement()
     {
-        rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+        // below line not currently working
+        //rb.velocity = new Vector3(rb.velocity.x, climbSpeed, rb.velocity.z);
+
         Debug.Log("climb movement");
+        if (playerMovement.Grounded == true)
+        {
+            Vector3 direction = Vector3.up;
+            direction.Normalize();
+            direction.x = 0;
+            direction.z = 0;
+            playerMovement._verticalVelocity = 1;
+        }
+        playerMovement._verticalVelocity -= playerMovement.Gravity;
+        playerMovement.Move();
     }
+
 }
