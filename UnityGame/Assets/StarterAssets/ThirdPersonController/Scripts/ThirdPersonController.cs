@@ -110,6 +110,9 @@ namespace StarterAssets
 
         private bool _hasAnimator;
 
+        // counter to keep track of how many tomes have been collected
+        public int tomeCounter;
+
         private bool IsCurrentDeviceMouse
         {
             get
