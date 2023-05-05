@@ -38,6 +38,7 @@ public class DialogueManager : MonoBehaviour
 
     void ShowDialogue()
     {
+        interactInstructions.SetActive(false);
         Dialogue.SetActive(true);
     }
 
