@@ -5,15 +5,16 @@ using UnityEngine.InputSystem;
 
 public class ShowUIOnKeyPress : MonoBehaviour
 {
-    public GameObject panelOne;
-    public GameObject panelTwo;
+    public GameObject ui; // the actual dialogue that will appear
+    public GameObject interactInstructions; // "press _ to interact"
 
-    bool playerNearby;
+    private bool playerNearby;
 
     void Start()
     {
-        panelOne.SetActive(false);
-        panelTwo.SetActive(false);
+        // default them to false
+        ui.SetActive(false);
+        interactInstructions.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,6 +22,8 @@ public class ShowUIOnKeyPress : MonoBehaviour
         if (other.name == "Player")
         {
             playerNearby = true;
+            Debug.Log("interact intstructions activated");
+            interactInstructions.SetActive(true);
         }
     }
 
@@ -30,8 +33,7 @@ public class ShowUIOnKeyPress : MonoBehaviour
         if (other.name == "Player")
         {
             playerNearby = false;
-            panelOne.SetActive(false);
-            panelTwo.SetActive(false);
+            ui.SetActive(false);
 
         }
     }
@@ -41,25 +43,9 @@ public class ShowUIOnKeyPress : MonoBehaviour
         // if player is next to npc + interact key pressed
         if (Keyboard.current.fKey.wasPressedThisFrame && playerNearby == true)
         {
-            // turn on the ui panels
-            panelOne.SetActive(true);
-            panelTwo.SetActive(true);
-            Debug.Log("ui activated");
-
-            //Time.timeScale = 0;
-
-
-
-
-            // not working below
-
-            //if (Keyboard.current.enterKey.wasPressedThisFrame)
-            //{
-                //panelOne.SetActive(false);
-                //panelTwo.SetActive(false);
-                //Debug.Log("ui deactivated");
-            //}
-            
+            interactInstructions.SetActive(false);
+            ui.SetActive(true);
+            Debug.Log("dialogue activated"); 
         }
     }
 
