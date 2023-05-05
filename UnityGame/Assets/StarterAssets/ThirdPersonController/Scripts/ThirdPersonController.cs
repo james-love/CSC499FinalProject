@@ -111,10 +111,17 @@ namespace StarterAssets
         private bool _hasAnimator;
 
         // counter to keep track of how many tomes have been collected
-        public int tomeCounter;
+        [SerializeField] private int tomesCollected = 0;
 
-        // keeps track of how many bullets player has
-        [SerializeField] public int ammoCount;
+        // function to update the tome counter (connected to Tome and UIManager scripts)
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "Tome")
+            {
+                tomesCollected += 1;
+                UIManager.Instance.updateCounter(tomesCollected);
+            }
+        }
 
         private bool IsCurrentDeviceMouse
         {
