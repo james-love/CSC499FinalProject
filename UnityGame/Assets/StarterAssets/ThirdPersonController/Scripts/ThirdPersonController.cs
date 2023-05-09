@@ -2,6 +2,7 @@
 using UnityEngine;
 #if ENABLE_INPUT_SYSTEM 
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using static UnityEngine.InputSystem.InputAction;
 #endif
 
@@ -64,8 +65,14 @@ namespace StarterAssets
         public LayerMask GroundLayers;
 
         [Header("Cinemachine")]
-        [Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
-        public GameObject CinemachineCameraTarget;
+        [SerializeField] private bool firstPerson = true;
+        [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
+        [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
+        [SerializeField] private GameObject firstPersonCameraTarget;
+        [SerializeField] private GameObject thirdPersonCameraTarget;
+        [SerializeField] private SkinnedMeshRenderer playerBodyMesh;
+
+        private GameObject cameraTarget;
 
         [Tooltip("How far in degrees can you move the camera up")]
         public float TopClamp = 70.0f;
@@ -112,15 +119,8 @@ namespace StarterAssets
 
         private const float _threshold = 0.01f;
 
-        private bool _hasAnimator;
-
         // counter to keep track of how many tomes have been collected
         [SerializeField] private int tomesCollected = 0;
-
-
-        [SerializeField] private bool firstPerson = true;
-        [SerializeField] private CinemachineVirtualCamera firstPersonCamera;
-        [SerializeField] private CinemachineVirtualCamera thirdPersonCamera;
 
         // function to update the tome counter (connected to Tome and UIManager scripts)
         private void OnTriggerEnter(Collider other)
@@ -152,13 +152,15 @@ namespace StarterAssets
             {
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
+
+            cameraTarget = firstPersonCameraTarget;
         }
 
         private void Start()
         {
-            _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
-            
-            _hasAnimator = TryGetComponent(out _animator);
+            _cinemachineTargetYaw = cameraTarget.transform.rotation.eulerAngles.y;
+
+            _animator = GetComponentInChildren<Animator>();
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM 
@@ -183,13 +185,13 @@ namespace StarterAssets
                 firstPerson = !firstPerson;
                 firstPersonCamera.Priority = firstPerson ? 11 : 10;
                 thirdPersonCamera.Priority = firstPerson ? 10 : 11;
+                cameraTarget = firstPerson ? firstPersonCameraTarget : thirdPersonCameraTarget;
+                playerBodyMesh.shadowCastingMode = firstPerson ? ShadowCastingMode.ShadowsOnly : ShadowCastingMode.On;
             }
         }
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
-
             JumpAndGravity();
             GroundedCheck();
             Move();
@@ -217,11 +219,7 @@ namespace StarterAssets
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
 
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetBool(_animIDGrounded, Grounded);
-            }
+            _animator.SetBool(_animIDGrounded, Grounded);
         }
 
         private void CameraRotation()
@@ -241,7 +239,7 @@ namespace StarterAssets
                     _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
                     // Update Cinemachine camera target pitch
-                    CinemachineCameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
+                    cameraTarget.transform.localRotation = Quaternion.Euler(_cinemachineTargetPitch, 0.0f, 0.0f);
 
                     // rotate the player left and right
                     transform.Rotate(Vector3.up * _rotationVelocity);
@@ -263,7 +261,7 @@ namespace StarterAssets
                 _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
                 // Cinemachine will follow this target
-                CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
+                cameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                     _cinemachineTargetYaw, 0.0f);
             }
         }
@@ -341,12 +339,8 @@ namespace StarterAssets
                                  new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
             }
 
-            // update animator if using character
-            if (_hasAnimator)
-            {
-                _animator.SetFloat(_animIDSpeed, _animationBlend);
-                _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
-            }
+            _animator.SetFloat(_animIDSpeed, _animationBlend);
+            _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
         }
 
         private void JumpAndGravity()
@@ -356,12 +350,8 @@ namespace StarterAssets
                 // reset the fall timeout timer
                 _fallTimeoutDelta = FallTimeout;
 
-                // update animator if using character
-                if (_hasAnimator)
-                {
-                    _animator.SetBool(_animIDJump, false);
-                    _animator.SetBool(_animIDFreeFall, false);
-                }
+                _animator.SetBool(_animIDJump, false);
+                _animator.SetBool(_animIDFreeFall, false);
 
                 // stop our velocity dropping infinitely when grounded
                 if (_verticalVelocity < 0.0f)
@@ -375,11 +365,7 @@ namespace StarterAssets
                     // the square root of H * -2 * G = how much velocity needed to reach desired height
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
+                    _animator.SetBool(_animIDJump, true);
                 }
 
                 // jump timeout
@@ -400,11 +386,7 @@ namespace StarterAssets
                 }
                 else
                 {
-                    // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDFreeFall, true);
-                    }
+                    _animator.SetBool(_animIDFreeFall, true);
                 }
 
                 // if we are not grounded, do not jump
@@ -437,28 +419,6 @@ namespace StarterAssets
             Gizmos.DrawSphere(
                 new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z),
                 GroundedRadius);
-        }
-
-        private void OnFootstep(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                if (FootstepAudioClips.Length > 0)
-                {
-                    var index = Random.Range(0, FootstepAudioClips.Length);
-                    if(FootstepAudioClips[index] != null)
-                        AudioSource.PlayClipAtPoint(FootstepAudioClips[index], transform.TransformPoint(_controller.center), FootstepAudioVolume);
-                }
-            }
-        }
-
-        private void OnLand(AnimationEvent animationEvent)
-        {
-            if (animationEvent.animatorClipInfo.weight > 0.5f)
-            {
-                if(LandingAudioClip != null)
-                    AudioSource.PlayClipAtPoint(LandingAudioClip, transform.TransformPoint(_controller.center), FootstepAudioVolume);
-            }
         }
     }
 }

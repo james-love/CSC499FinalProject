@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Tome
+  - Sword
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Climbable
-  - 
-  - 
+  - Sword
+  - Player
   - 
   - 
   - 
