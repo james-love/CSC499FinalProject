@@ -12,5 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mountainous.unity
     guid: 0b9180e224967e648bd93e9b5fec487c
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 5a6db3d1d3feeab4bbeeb593387b8a01,
+      type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
