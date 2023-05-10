@@ -14,9 +14,11 @@ public class OpenDoor : MonoBehaviour
     public GameObject door;
     public GameObject puzzleUI;
     public bool inRange;
+    public GameObject wrongComboUI;
 
     public string currentCombination = "";
-    public string correctCombination = "13570"; // Set the correct combination here
+    public string correctCombination = "13570"; // set the correct combination here
+
 
     private void Update()
     {
@@ -68,6 +70,7 @@ public class OpenDoor : MonoBehaviour
                 Debug.Log("Door opened, correct keys pressed");
                 door.SetActive(false);
                 puzzleUI.SetActive(false);
+                wrongComboUI.SetActive(false);
             }
         }
     }
@@ -83,6 +86,8 @@ public class OpenDoor : MonoBehaviour
             else
             {
                 Debug.Log("Incorrect combination of keys. Resetting entry...");
+                wrongComboUI.SetActive(true);
+                StartCoroutine(HoldUp());
                 currentCombination = "";
             }
         }
@@ -104,12 +109,20 @@ public class OpenDoor : MonoBehaviour
         {
             inRange = false;
             puzzleUI.SetActive(false);
+            wrongComboUI.SetActive(false);
             oneKey = false;
             threeKey = false;
             fiveKey = false;
             sevenKey = false;
             zeroKey = false;
         }
-    }   
+    }
+
+    IEnumerator HoldUp()
+    {
+        yield return new WaitForSeconds(4);
+        wrongComboUI.SetActive(false);
+
+    }
 
 }
