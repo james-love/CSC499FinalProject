@@ -6,10 +6,12 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] private Sword sword;
     private PlayerInput playerInput;
+    private Animator playerAnimator;
 
     private void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
+        playerAnimator = GetComponentInChildren<Animator>();
 
         playerInput.actions.FindAction("Player/DrawSword").started += DrawSwordPressed;
         playerInput.actions.FindAction("Player/Attack").started += AttackPressed;
@@ -19,7 +21,7 @@ public class Attack : MonoBehaviour
     {
         if (context.started)
         {
-            print("draw sword pressed");
+            sword.ToggleSword(playerAnimator);
         }
     }
 
@@ -27,7 +29,7 @@ public class Attack : MonoBehaviour
     {
         if (context.started)
         {
-            print("attack pressed");
+            sword.SwingSword(playerAnimator);
         }
     }
 }

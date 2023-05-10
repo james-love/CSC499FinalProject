@@ -10,7 +10,7 @@ public class ScoreScreen : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
-        HS.Init(this, "TempName01");
+        HS.Init(this, "Team04Game");
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
