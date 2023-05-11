@@ -206,6 +206,12 @@ namespace StarterAssets
             CameraRotation();
         }
 
+        public void Teleport(Vector3 newPosition)
+        {
+            transform.position = newPosition;
+            Physics.SyncTransforms();
+        }
+
         private void AssignAnimationIDs()
         {
             _animIDSpeed = Animator.StringToHash("Speed");
@@ -276,9 +282,9 @@ namespace StarterAssets
 
         public void ResetPos()
         {
-            Debug.Log("debug");
-            // _controller.Move(lastGroundedPos);
-            transform.position = lastGroundedPos;
+            Time.timeScale = 0f;
+            Teleport(lastGroundedPos - (lastGroundedVelocity * 0.1f));
+            Time.timeScale = 1f;
         }
 
         public void Move() // made public for climb script
