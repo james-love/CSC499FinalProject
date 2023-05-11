@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private static UIManager instance;
 
     [SerializeField] public TextMeshProUGUI tomesText;
-    public ThirdPersonController player;
+    //public ThirdPersonController player;
 
     public static UIManager Instance
     {
@@ -35,5 +35,6 @@ public class UIManager : MonoBehaviour
     {
         // make sure tomes are TAGGED !
         tomesText.text = "Tomes: " + tomesCollected;
+        Debug.Log("in counter method");
     }
 }

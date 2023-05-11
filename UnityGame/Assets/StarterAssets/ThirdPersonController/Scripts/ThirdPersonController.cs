@@ -134,6 +134,7 @@ namespace StarterAssets
                 tomesCollected += 1;
                 UIManager.Instance.updateCounter(tomesCollected);
                 other.gameObject.SetActive(false);
+                Debug.Log("tome picked up");
             }
         }
 
