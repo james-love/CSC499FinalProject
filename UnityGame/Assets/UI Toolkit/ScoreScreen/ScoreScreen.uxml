@@ -22,7 +22,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="ScoreSubmit" class="submit-box">
             <ui:TextField picking-mode="Ignore" name="NameInput" class="submit-item" />
-            <ui:Button text="Submit Score" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" style="-unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgba(255, 255, 255, 0); color: rgb(7, 7, 7); -unity-text-outline-color: rgba(255, 255, 255, 0);" />
+            <ui:Button text="Submit Score" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" style="-unity-background-image-tint-color: rgba(255, 255, 255, 0); background-color: rgba(255, 255, 255, 0); color: rgb(7, 7, 7); -unity-text-outline-color: rgba(255, 255, 255, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
