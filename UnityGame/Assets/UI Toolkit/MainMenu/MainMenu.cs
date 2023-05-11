@@ -30,6 +30,6 @@ public class MainMenu : MonoBehaviour
 
     private void AddHoverSound(Button btn)
     {
-        btn.RegisterCallback<MouseOverEvent>(_ => AudioManager.Instance.PlayOneShot(FMODEvents.Instance.OneShotTest, Vector3.zero));
+        //btn.RegisterCallback<MouseOverEvent>(_ => AudioManager.Instance.PlayOneShot(FMODEvents.Instance.OneShotTest, Vector3.zero));
     }
 }
