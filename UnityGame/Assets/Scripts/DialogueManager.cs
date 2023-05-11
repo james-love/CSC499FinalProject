@@ -44,9 +44,9 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
-        if (inRange && Keyboard.current.fKey.wasPressedThisFrame)
+        if (inRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
-            Debug.Log("f key pressed");
+            Debug.Log("e key pressed");
             ShowDialogue();
         }
     }

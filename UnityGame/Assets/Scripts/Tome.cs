@@ -18,7 +18,7 @@ public class Tome : MonoBehaviour
             Debug.Log("tome picked up");
             this.gameObject.SetActive(false);
             // or 
-            // Destroy(this.gameObject);
+            //Destroy(this.gameObject);
         }
     }
 }

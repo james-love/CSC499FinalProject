@@ -13,10 +13,9 @@ GameObject:
   - component: {fileID: 3283854980351253290}
   - component: {fileID: 3283854980351253301}
   - component: {fileID: 3283854980351253300}
-  - component: {fileID: 3283854980351253302}
-  - component: {fileID: 3283854980351253297}
   - component: {fileID: 3283854980351253296}
   - component: {fileID: 3283854980351253289}
+  - component: {fileID: 3267348272788467825}
   m_Layer: 0
   m_Name: Shop NPC
   m_TagString: Untagged
@@ -116,30 +115,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.0235348
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3283854980351253302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283854980351253298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a3f63cab3f75545aef20b93917d26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3283854980351253297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3283854980351253298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7a3f63cab3f75545aef20b93917d26a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3283854980351253296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,5 +139,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc447b2e4422e949a879c3dedb9b96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelOne: {fileID: 0}
-  panelTwo: {fileID: 0}
+  ui: {fileID: 0}
+  interactInstructions: {fileID: 0}
+--- !u!114 &3267348272788467825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283854980351253298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98768a3563fd0b5409597bbf497dbdd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Dialogue: {fileID: 0}
+  interactInstructions: {fileID: 0}
