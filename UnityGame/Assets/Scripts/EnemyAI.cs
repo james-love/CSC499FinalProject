@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyAI : Enemy
 {
     [SerializeField] private float _speed = 1.5f;
     [SerializeField] private float _gravity = 2.0f;
@@ -12,6 +12,7 @@ public class EnemyAI : MonoBehaviour
     private Transform _player;
     private Vector3 _velocity;
     public float _maxDistance = 10;
+    private float totalHealth = 1f;
     void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -49,5 +50,12 @@ public class EnemyAI : MonoBehaviour
         {
             Debug.Log("enemy attack deactivated");
         }
+    }
+
+    public override void Hit(float damageValue)
+    {
+        totalHealth = Mathf.Clamp(totalHealth - damageValue, 0f, totalHealth);
+        if (totalHealth == 0f)
+            Destroy(gameObject);
     }
 }
