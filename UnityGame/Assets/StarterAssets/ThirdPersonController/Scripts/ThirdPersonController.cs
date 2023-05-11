@@ -113,7 +113,7 @@ namespace StarterAssets
         private PlayerInput _playerInput;
 #endif
         private Animator _animator;
-        private CharacterController _controller;
+        public CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
 
@@ -121,6 +121,10 @@ namespace StarterAssets
 
         // counter to keep track of how many tomes have been collected
         [SerializeField] private int tomesCollected = 0;
+
+        // for resetting player position
+        public Vector3 lastGroundedPos;
+        public Vector3 lastGroundedVelocity;
 
         // function to update the tome counter (connected to Tome and UIManager scripts)
         private void OnTriggerEnter(Collider other)
@@ -218,7 +222,11 @@ namespace StarterAssets
                 transform.position.z);
             Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers,
                 QueryTriggerInteraction.Ignore);
-
+            if (Grounded)
+            {
+                lastGroundedPos = transform.position;
+                lastGroundedVelocity = _controller.velocity;
+            }
             _animator.SetBool(_animIDGrounded, Grounded);
         }
 
@@ -264,6 +272,13 @@ namespace StarterAssets
                 cameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                     _cinemachineTargetYaw, 0.0f);
             }
+        }
+
+        public void ResetPos()
+        {
+            Debug.Log("debug");
+            // _controller.Move(lastGroundedPos);
+            transform.position = lastGroundedPos;
         }
 
         public void Move() // made public for climb script
@@ -421,4 +436,5 @@ namespace StarterAssets
                 GroundedRadius);
         }
     }
+
 }

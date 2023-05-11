@@ -7,7 +7,8 @@ TagManager:
   - CinemachineTarget
   - Tome
   - Sword
-  - Enemy
+  - Ground
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Climbable
   - Sword
   - Player
-  - 
+  - Spike
   - 
   - 
   - 
@@ -44,4 +45,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 902544217
+    locked: 0
+  - name: Farground
+    uniqueID: 3915186765
     locked: 0
