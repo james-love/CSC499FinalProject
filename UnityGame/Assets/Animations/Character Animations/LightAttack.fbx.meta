@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 14bd41c18fd795f41a6999823f013067
+guid: 661a48c372043af4d9afa6ed08c07415
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -33,11 +33,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: IdleWithSword
+      name: LightAttack
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 110
+      lastFrame: 127
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

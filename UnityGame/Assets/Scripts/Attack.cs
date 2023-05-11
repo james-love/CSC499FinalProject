@@ -14,7 +14,8 @@ public class Attack : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
 
         playerInput.actions.FindAction("Player/DrawSword").started += DrawSwordPressed;
-        playerInput.actions.FindAction("Player/Attack").started += AttackPressed;
+        playerInput.actions.FindAction("Player/LightAttack").performed += AttackPressed;
+        playerInput.actions.FindAction("Player/HeavyAttack").performed += HeavyAttackPressed;
     }
 
     private void DrawSwordPressed(CallbackContext context)
@@ -27,9 +28,17 @@ public class Attack : MonoBehaviour
 
     private void AttackPressed(CallbackContext context)
     {
-        if (context.started)
+        if (context.performed)
         {
-            sword.SwingSword(playerAnimator);
+            sword.LightAttack(playerAnimator);
+        }
+    }
+
+    private void HeavyAttackPressed(CallbackContext context)
+    {
+        if (context.performed)
+        {
+            sword.HeavyAttack(playerAnimator);
         }
     }
 }

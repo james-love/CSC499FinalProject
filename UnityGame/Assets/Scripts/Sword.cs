@@ -22,31 +22,45 @@ public class Sword : MonoBehaviour
         StartCoroutine(SwordAnimation(animator));
     }
 
-    public void SwingSword(Animator animator)
+    public void LightAttack(Animator animator)
     {
-        //print($"{inHand} {!drawingSword} {!attacking}");
         if (inHand && !drawingSword && !attacking)
-            StartCoroutine(AttackAnimation(animator));
+            StartCoroutine(AttackAnimation(animator, true));
+    }
+
+    public void HeavyAttack(Animator animator)
+    {
+        if (inHand && !drawingSword && !attacking)
+            StartCoroutine(AttackAnimation(animator, false));
+    }
+
+    public void OnChildTriggerEnter(Collider other)
+    {
+        if (attacking && other.CompareTag("Enemy"))
+        {
+            other.GetComponent<Enemy>().Hit(1f);
+        }
     }
 
     private IEnumerator SwordAnimation(Animator animator)
     {
         drawingSword = true;
         animator.SetTrigger("DrawSword");
-        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "DrawSword"));
+        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "DrawSword", 1));
         inHand = !inHand;
         animator.SetBool("SwordInHand", inHand);
         animator.SetTrigger("DrawSwordReverse");
-        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "DrawSwordReverse"));
+        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "DrawSwordReverse", 1));
         drawingSword = false;
         animator.SetTrigger("DrawSwordFinished");
     }
 
-    private IEnumerator AttackAnimation(Animator animator)
+    private IEnumerator AttackAnimation(Animator animator, bool isLight)
     {
         attacking = true;
+        animator.SetBool("LightAttack", isLight);
         animator.SetTrigger("SwordSlash");
-        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "SwordSlash"));
+        yield return new WaitUntil(() => Utility.AnimationFinished(animator, isLight ? "LightSlash" : "HeavySlash", 1));
         animator.SetTrigger("SwordSlashFinished");
         attacking = false;
     }
