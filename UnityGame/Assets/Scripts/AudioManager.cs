@@ -20,6 +20,15 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 
+    public void PlayOneShotWithParameters(EventReference sound, Vector3 worldPos, string parameterName, float parameterValue)
+    {
+        EventInstance instance = RuntimeManager.CreateInstance(sound);
+        instance.setParameterByName(parameterName, parameterValue);
+        instance.set3DAttributes(worldPos.To3DAttributes());
+        instance.start();
+        instance.release();
+    }
+
     public EventInstance CreateInstance(EventReference eventRef)
     {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventRef);
@@ -52,7 +61,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeMusic(FMODEvents.Instance.MusicTest);
+        InitializeMusic(FMODEvents.Instance.Level01Music);
     }
 
     private void Update()
