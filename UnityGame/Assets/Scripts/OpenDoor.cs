@@ -17,7 +17,7 @@ public class OpenDoor : MonoBehaviour
     public GameObject wrongComboUI;
 
     public string currentCombination = "";
-    public string correctCombination = "13570"; // set the correct combination here
+    public string correctCombination = "1357"; // set the correct combination here
 
 
     private void Update()

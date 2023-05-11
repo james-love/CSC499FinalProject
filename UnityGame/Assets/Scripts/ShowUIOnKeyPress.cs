@@ -41,7 +41,7 @@ public class ShowUIOnKeyPress : MonoBehaviour
     void Update()
     {
         // if player is next to npc + interact key pressed
-        if (Keyboard.current.fKey.wasPressedThisFrame && playerNearby == true)
+        if (Keyboard.current.eKey.wasPressedThisFrame && playerNearby == true)
         {
             interactInstructions.SetActive(false);
             ui.SetActive(true);

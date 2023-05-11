@@ -10,4 +10,13 @@ public class LevelExit : Interactable, ISpawnPoint
     {
         LevelManager.Instance.LoadLevel(goToScene, goToSpawnPoint);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            print(goToSpawnPoint);
+            LevelManager.Instance.LoadLevel(goToScene, goToSpawnPoint);
+        }
+    }
 }

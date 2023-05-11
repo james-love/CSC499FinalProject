@@ -1,4 +1,6 @@
+using StarterAssets;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,11 +33,21 @@ public class LevelManager : MonoBehaviour
         fadeTransition.SetTrigger("Start");
         yield return new WaitUntil(() => Utility.AnimationFinished(fadeTransition, "TransitionStart"));
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(levelIndex);
-        while (!operation.isDone)
-            yield return null;
+        if (levelIndex != SceneManager.GetActiveScene().buildIndex)
+        {
+            AsyncOperation operation = SceneManager.LoadSceneAsync(levelIndex);
+            while (!operation.isDone)
+                yield return null;
+        }
 
-        print(waypoint);
+        foreach (GameObject point in GameObject.FindGameObjectsWithTag("SpawnPoint"))
+        {
+            if (point.GetComponents<MonoBehaviour>().OfType<ISpawnPoint>().ToArray()?[0]?.SpawnPointIndex == waypoint)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().Teleport(point.transform.position);
+                break;
+            }
+        }
 
         fadeTransition.SetTrigger("Loaded");
         Time.timeScale = 1;
