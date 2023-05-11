@@ -8,14 +8,14 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    -unity-font-definition: url('project://database/Assets/Fonts.UI/Roman_New_Times%20SDF.asset?fileID=11400000&guid=c1f824a2e0f327041a2ab6da0eb76f97&type=2#Roman_New_Times SDF');
+    -unity-font-definition: url('project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&guid=d614eaf33ea30024d9106ff8ce083932&type=2#Roman_New_Times');
 }
 
 .end-text {
     font-size: 178px;
     width: 100%;
     -unity-text-align: upper-center;
-    color: rgba(212, 156, 255, 255);
+    color: rgb(212, 156, 255);
     justify-content: flex-start;
     bottom: -63px;
 }
@@ -34,7 +34,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    color: rgba(212, 156, 255, 255);
+    color: rgb(212, 156, 255);
 }
 
 .breakdown-item {
@@ -50,7 +50,7 @@
     border-left-width: 0;
     border-top-width: 0;
     border-bottom-width: 0;
-    color: rgba(207, 201, 255, 255);
+    color: rgb(207, 201, 255);
 }
 
 .breakdown-value {
@@ -69,7 +69,7 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    color: rgba(0, 0, 0, 255);
+    color: rgb(0, 0, 0);
     font-size: 12px;
 }
 
@@ -78,5 +78,5 @@
     width: 25%;
     margin-left: 50px;
     margin-right: 50px;
-    color: rgba(64, 0, 65, 255);
+    color: rgb(64, 0, 65);
 }
