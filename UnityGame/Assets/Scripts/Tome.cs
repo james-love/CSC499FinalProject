@@ -5,13 +5,10 @@ using UnityEngine;
 
 public class Tome : MonoBehaviour
 {
-    public int tomeCounter;
-    //public ThirdPersonController playerController;
-
+    // don't forget to tag the tomes as "Tome"
     private void Start()
     {
         this.gameObject.SetActive(true);
-        //playerController = GetComponent<ThirdPersonController>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,9 +19,6 @@ public class Tome : MonoBehaviour
             this.gameObject.SetActive(false);
             // or 
             // Destroy(this.gameObject);
-            tomeCounter++;
-
-            //playerController.tomeCounter++;
         }
     }
 }

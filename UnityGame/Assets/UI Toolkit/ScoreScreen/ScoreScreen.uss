@@ -1,0 +1,82 @@
+:root {
+    --divider-color: white;
+}
+
+.container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    -unity-font-definition: url('project://database/Assets/Fonts.UI/Roman_New_Times%20SDF.asset?fileID=11400000&guid=c1f824a2e0f327041a2ab6da0eb76f97&type=2#Roman_New_Times SDF');
+}
+
+.end-text {
+    font-size: 178px;
+    width: 100%;
+    -unity-text-align: upper-center;
+    color: rgba(212, 156, 255, 255);
+    justify-content: flex-start;
+    bottom: -63px;
+}
+
+.breakdown {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    font-size: 12px;
+}
+
+.breakdown-container {
+    flex-direction: row;
+    font-size: 141px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: rgba(212, 156, 255, 255);
+}
+
+.breakdown-item {
+    width: 50%;
+    -unity-text-align: upper-right;
+    padding-right: 100px;
+    border-right-color: rgba(2, 2, 2, 0);
+    border-right-width: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border-left-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    color: rgba(207, 201, 255, 255);
+}
+
+.breakdown-value {
+    -unity-text-align: upper-left;
+    border-left-width: 10px;
+    border-right-width: 0;
+    padding-left: 100px;
+    border-left-color: rgba(255, 255, 255, 0);
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+.submit-box {
+    flex-direction: row;
+    margin-top: 82px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 255);
+    font-size: 12px;
+}
+
+.submit-item {
+    font-size: 106px;
+    width: 25%;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: rgba(64, 0, 65, 255);
+}
