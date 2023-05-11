@@ -9,6 +9,7 @@ TagManager:
   - Sword
   - Ground
   - Spike
+  - Enemy
   layers:
   - Default
   - TransparentFX

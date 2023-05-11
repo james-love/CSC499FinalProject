@@ -190,7 +190,7 @@ namespace StarterAssets
                 firstPersonCamera.Priority = firstPerson ? 11 : 10;
                 thirdPersonCamera.Priority = firstPerson ? 10 : 11;
                 cameraTarget = firstPerson ? firstPersonCameraTarget : thirdPersonCameraTarget;
-                playerBodyMesh.shadowCastingMode = firstPerson ? ShadowCastingMode.ShadowsOnly : ShadowCastingMode.On;
+                //playerBodyMesh.shadowCastingMode = firstPerson ? ShadowCastingMode.ShadowsOnly : ShadowCastingMode.On;
             }
         }
 
