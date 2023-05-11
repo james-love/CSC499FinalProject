@@ -7,6 +7,8 @@ TagManager:
   - CinemachineTarget
   - Tome
   - Sword
+  - Ground
+  - Spike
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Climbable
   - Sword
   - Player
-  - 
+  - Spike
   - 
   - 
   - 
