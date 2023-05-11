@@ -120,7 +120,7 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         // counter to keep track of how many tomes have been collected
-        [SerializeField] private int tomesCollected = 0;
+        [SerializeField] public int tomesCollected = 0;
 
         // for resetting player position
         public Vector3 lastGroundedPos;

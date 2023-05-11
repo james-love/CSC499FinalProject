@@ -1,3 +1,4 @@
+using StarterAssets;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour
     private static UIManager instance;
 
     [SerializeField] public TextMeshProUGUI tomesText;
+    public ThirdPersonController player;
+
     public static UIManager Instance
     {
         get

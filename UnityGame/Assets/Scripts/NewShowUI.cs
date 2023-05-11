@@ -5,13 +5,11 @@ using UnityEngine.InputSystem;
 
 public class NewShowUI : MonoBehaviour
 {
-    public GameObject panelOne;
-    public GameObject panelTwo;
+    public GameObject text;
 
     void Start()
     {
-        panelOne.SetActive(false);
-        panelTwo.SetActive(false);
+        text.SetActive(false);
     }
 
 
@@ -20,8 +18,7 @@ public class NewShowUI : MonoBehaviour
         if (other.name == "Player")
         {
             Debug.Log("panels set active");
-            panelOne.SetActive(true);
-            panelTwo.SetActive(true);
+            text.SetActive(true);
         }
     }
 
@@ -29,8 +26,7 @@ public class NewShowUI : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            panelOne.SetActive(false);
-            panelTwo.SetActive(false);
+            text.SetActive(false);
         }
     }
 }
