@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class ScoreScreen : MonoBehaviour
 {
     private readonly string placeHolderText = "Input name...";
+    [SerializeField] private StarterAssetsInputs starterAssetInputs;
     private VisualElement root;
     private float startTime;
 
@@ -14,6 +15,8 @@ public class ScoreScreen : MonoBehaviour
     {
         Time.timeScale = 0f;
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().currentActionMap.Disable();
+        starterAssetInputs.cursorLocked = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         UpdateDisplay();
         root.style.display = DisplayStyle.Flex;
     }

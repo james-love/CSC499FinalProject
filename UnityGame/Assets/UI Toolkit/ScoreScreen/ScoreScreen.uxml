@@ -1,7 +1,7 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/ScoreScreen/ScoreScreen.uss?fileID=7433441132597879392&amp;guid=e0d3f1874367eb0449e333618d5a3a2c&amp;type=3#ScoreScreen" />
-    <ui:VisualElement name="Container" class="container Test">
-        <ui:Label text="You win!" display-tooltip-when-elided="true" name="EndText" class="end-text" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:Label text="You Win!" display-tooltip-when-elided="true" name="EndText" class="end-text" />
         <ui:VisualElement name="ScoreBreakdown" class="breakdown">
             <ui:VisualElement name="Time" class="breakdown-container">
                 <ui:Label text="Time" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
@@ -12,7 +12,7 @@
                 <ui:Label text="50" display-tooltip-when-elided="true" name="TomesValue" class="breakdown-item breakdown-value" />
             </ui:VisualElement>
             <ui:VisualElement name="Deaths" class="breakdown-container">
-                <ui:Label text="Deaths" display-tooltip-when-elided="true" name="Label" class="breakdown-item" style="border-right-color: rgba(255, 255, 255, 0);" />
+                <ui:Label text="Deaths" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
                 <ui:Label text="10" display-tooltip-when-elided="true" name="DeathsValue" class="breakdown-item breakdown-value" />
             </ui:VisualElement>
             <ui:VisualElement name="Final" class="breakdown-container">
@@ -22,7 +22,7 @@
         </ui:VisualElement>
         <ui:VisualElement name="ScoreSubmit" class="submit-box">
             <ui:TextField picking-mode="Ignore" name="NameInput" class="submit-item" />
-            <ui:Button text="Submit Score" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" style="-unity-background-image-tint-color: rgba(255, 255, 255, 0); background-color: rgba(255, 255, 255, 0); color: rgb(7, 7, 7); -unity-text-outline-color: rgba(255, 255, 255, 0);" />
+            <ui:Button text="Submit Score" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
