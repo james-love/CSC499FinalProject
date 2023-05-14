@@ -1,4 +1,3 @@
-using StarterAssets;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Animator fadeTransition;
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject playerActions;
     public static LevelManager Instance { get; private set; }
 
     public void LoadLevel(int levelIndex, int waypoint)
@@ -19,16 +18,16 @@ public class LevelManager : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0f;
-        player.GetComponent<PlayerInput>().currentActionMap.Disable();
-        player.GetComponent<StarterAssetsInputs>().cursorLocked = false;
+        playerActions.GetComponent<PlayerInput>().currentActionMap.Disable();
+        playerActions.GetComponent<PlayerMovementInputs>().CursorLocked = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        player.GetComponent<StarterAssetsInputs>().cursorLocked = true;
-        player.GetComponent<PlayerInput>().currentActionMap.Enable();
+        playerActions.GetComponent<PlayerMovementInputs>().CursorLocked = true;
+        playerActions.GetComponent<PlayerInput>().currentActionMap.Enable();
         Time.timeScale = 1f;
     }
 
@@ -62,7 +61,7 @@ public class LevelManager : MonoBehaviour
         {
             if (point.GetComponents<MonoBehaviour>().OfType<ISpawnPoint>().ToArray()?[0]?.SpawnPointIndex == waypoint)
             {
-                GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().Teleport(point.transform.position);
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().Teleport(point.transform.position);
                 break;
             }
         }

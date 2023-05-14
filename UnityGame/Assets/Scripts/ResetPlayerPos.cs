@@ -1,4 +1,3 @@
-using StarterAssets;
 using UnityEngine;
 
 public class ResetPlayerPos : MonoBehaviour
@@ -7,7 +6,7 @@ public class ResetPlayerPos : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<ThirdPersonController>().ResetPos();
+            other.GetComponent<PlayerController>().ResetPos();
         }
     }
 }

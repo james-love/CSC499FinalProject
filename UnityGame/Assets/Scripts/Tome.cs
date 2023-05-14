@@ -1,6 +1,3 @@
-using StarterAssets;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tome : MonoBehaviour
@@ -15,10 +12,7 @@ public class Tome : MonoBehaviour
     {
         if (other.name == "Player")
         {
-            Debug.Log("tome picked up");
             this.gameObject.SetActive(false);
-            // or 
-            //Destroy(this.gameObject);
         }
     }
 }

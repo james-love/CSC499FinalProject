@@ -1,5 +1,4 @@
 using HighScore;
-using StarterAssets;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -38,7 +37,7 @@ public class ScoreScreen : MonoBehaviour
         int seconds = elapsedTime % 60;
 
         int deaths = 0;
-        int tomes = GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().tomesCollected;
+        int tomes = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().TomesCollected;
         int maxTomes = 8;
 
         root.Q<Label>("TimeValue").text = $"{minutes}:{seconds}";
