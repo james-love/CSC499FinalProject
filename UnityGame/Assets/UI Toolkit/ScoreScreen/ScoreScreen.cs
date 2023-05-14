@@ -1,23 +1,17 @@
 using HighScore;
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 public class ScoreScreen : MonoBehaviour
 {
     private readonly string placeHolderText = "Input name...";
-    [SerializeField] private StarterAssetsInputs starterAssetInputs;
     private VisualElement root;
     private float startTime;
 
     public void Open()
     {
-        Time.timeScale = 0f;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInput>().currentActionMap.Disable();
-        starterAssetInputs.cursorLocked = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.None;
-        UpdateDisplay();
+        LevelManager.Instance.Pause();
         root.style.display = DisplayStyle.Flex;
     }
 
