@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     private float targetRotation = 0.0f;
     private float rotationVelocity;
     private float verticalVelocity;
+    private Vector3 slidingForce = Vector3.zero;
 
     // timeout deltatime
     private float jumpTimeoutDelta;
@@ -139,6 +140,7 @@ public class PlayerController : MonoBehaviour
     {
         JumpAndGravity();
         GroundedCheck();
+        CalculateSlidingForce();
         Move();
     }
 
@@ -159,6 +161,12 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetBool("Grounded", grounded);
+    }
+
+    private void CalculateSlidingForce()
+    {
+        if (grounded && Physics.SphereCast(new(transform.position.x, transform.position.y + groundedRadius + 0.05f, transform.position.z), groundedRadius, Vector3.down, out var hit, 0.1f, groundLayers, QueryTriggerInteraction.Ignore))
+            slidingForce = Vector3.Angle(Vector3.up, hit.normal) > controller.slopeLimit ? new((1f - hit.normal.y) * hit.normal.x, 0f, (1f - hit.normal.y) * hit.normal.z) : Vector3.zero;
     }
 
     private void CameraRotation()
@@ -232,7 +240,7 @@ public class PlayerController : MonoBehaviour
 
         // move the player
         controller.Move((targetDirection.normalized * (speed * Time.deltaTime)) +
-                            (new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime));
+                            (new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime) + (slidingForce * Time.deltaTime));
 
         animator.SetFloat("Speed", animationBlend);
         animator.SetFloat("MotionSpeed", 1f);
