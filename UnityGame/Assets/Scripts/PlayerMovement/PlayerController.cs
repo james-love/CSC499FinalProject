@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     private float targetRotation = 0.0f;
     private float rotationVelocity;
     private float verticalVelocity;
+    [SerializeField] private float slideForceMultiplier = 3f;
     private Vector3 slidingForce = Vector3.zero;
 
     // timeout deltatime
@@ -85,8 +86,9 @@ public class PlayerController : MonoBehaviour
     private GameObject mainCamera;
 
     // for resetting player position
-    private Vector3 lastGroundedPos;
-    private Vector3 lastGroundedVelocity;
+    private Vector3 lastSafeGroundedPosition;
+    [SerializeField] private float safegroundCheckFrequency = 1f;
+    private float timeSinceLastSafeGroundCheck;
 
     // counter to keep track of how many tomes have been collected
     public int TomesCollected { get; set; } = 0;
@@ -99,9 +101,9 @@ public class PlayerController : MonoBehaviour
 
     public void ResetPos()
     {
-        Time.timeScale = 0f;
-        Teleport(lastGroundedPos - (lastGroundedVelocity * 0.1f));
-        Time.timeScale = 1f;
+        LevelManager.Instance.Pause();
+        Teleport(lastSafeGroundedPosition);
+        LevelManager.Instance.Resume();
     }
 
     // function to update the tome counter (connected to Tome and UIManager scripts)
@@ -122,6 +124,8 @@ public class PlayerController : MonoBehaviour
         {
             mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+
+        timeSinceLastSafeGroundCheck = safegroundCheckFrequency;
     }
 
     private void Start()
@@ -141,6 +145,7 @@ public class PlayerController : MonoBehaviour
         JumpAndGravity();
         GroundedCheck();
         CalculateSlidingForce();
+        SafeGroundCheck();
         Move();
     }
 
@@ -154,11 +159,6 @@ public class PlayerController : MonoBehaviour
         // set sphere position, with offset
         Vector3 spherePosition = new(transform.position.x, transform.position.y - groundedOffset, transform.position.z);
         grounded = Physics.CheckSphere(spherePosition, groundedRadius, groundLayers, QueryTriggerInteraction.Ignore);
-        if (grounded)
-        {
-            lastGroundedPos = transform.position;
-            lastGroundedVelocity = controller.velocity;
-        }
 
         animator.SetBool("Grounded", grounded);
     }
@@ -166,7 +166,35 @@ public class PlayerController : MonoBehaviour
     private void CalculateSlidingForce()
     {
         if (grounded && Physics.SphereCast(new(transform.position.x, transform.position.y + groundedRadius + 0.05f, transform.position.z), groundedRadius, Vector3.down, out var hit, 0.1f, groundLayers, QueryTriggerInteraction.Ignore))
-            slidingForce = Vector3.Angle(Vector3.up, hit.normal) > controller.slopeLimit ? new((1f - hit.normal.y) * hit.normal.x, 0f, (1f - hit.normal.y) * hit.normal.z) : Vector3.zero;
+            slidingForce = Vector3.Angle(Vector3.up, hit.normal) > controller.slopeLimit ? new((1f - hit.normal.y) * hit.normal.x * slideForceMultiplier, 0f, (1f - hit.normal.y) * hit.normal.z * slideForceMultiplier) : Vector3.zero;
+    }
+
+    private void SafeGroundCheck()
+    {
+        timeSinceLastSafeGroundCheck = Mathf.Clamp(timeSinceLastSafeGroundCheck + Time.deltaTime, 0f, safegroundCheckFrequency);
+        if
+        (
+            grounded &&
+            timeSinceLastSafeGroundCheck == safegroundCheckFrequency &&
+            Physics.Raycast(
+                new Vector3(transform.position.x + groundedRadius, transform.position.y + 0.05f, transform.position.z),
+                Vector3.down, out var hit1, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
+            Physics.Raycast(
+                new Vector3(transform.position.x - groundedRadius, transform.position.y + 0.05f, transform.position.z),
+                Vector3.down, out var hit2, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
+            Physics.Raycast(
+                new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z + groundedRadius),
+                Vector3.down, out var hit3, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
+            Physics.Raycast(
+                new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z - groundedRadius),
+                Vector3.down, out var hit4, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
+            Mathf.Approximately(hit1.distance, hit2.distance) &&
+            Mathf.Approximately(hit2.distance, hit3.distance) &&
+            Mathf.Approximately(hit3.distance, hit4.distance))
+        {
+            lastSafeGroundedPosition = transform.position;
+            timeSinceLastSafeGroundCheck = 0f;
+        }
     }
 
     private void CameraRotation()
@@ -240,7 +268,7 @@ public class PlayerController : MonoBehaviour
 
         // move the player
         controller.Move((targetDirection.normalized * (speed * Time.deltaTime)) +
-                            (new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime) + (slidingForce * Time.deltaTime));
+                            (new Vector3(0.0f, verticalVelocity, 0.0f) * Time.deltaTime) + (grounded ? (slidingForce * Time.deltaTime) : Vector3.zero));
 
         animator.SetFloat("Speed", animationBlend);
         animator.SetFloat("MotionSpeed", 1f);
