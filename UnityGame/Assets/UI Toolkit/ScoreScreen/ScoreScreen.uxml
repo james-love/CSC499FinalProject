@@ -1,28 +1,28 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/ScoreScreen/ScoreScreen.uss?fileID=7433441132597879392&amp;guid=e0d3f1874367eb0449e333618d5a3a2c&amp;type=3#ScoreScreen" />
     <ui:VisualElement name="Container" class="container">
-        <ui:Label text="You Win!" display-tooltip-when-elided="true" name="EndText" class="end-text" />
-        <ui:VisualElement name="ScoreBreakdown" class="breakdown">
+        <ui:Label text="Congrats!" display-tooltip-when-elided="true" name="EndText" class="end-text" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 232px;" />
+        <ui:VisualElement name="ScoreBreakdown" class="breakdown" style="margin-top: 0;">
             <ui:VisualElement name="Time" class="breakdown-container">
-                <ui:Label text="Time" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
-                <ui:Label text="12:34" display-tooltip-when-elided="true" name="TimeValue" class="breakdown-item breakdown-value" />
+                <ui:Label text="Time" display-tooltip-when-elided="true" name="Label" class="breakdown-item" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 135px; width: 964px; border-right-color: rgba(0, 0, 0, 0);" />
+                <ui:Label text="12:34" display-tooltip-when-elided="true" name="TimeValue" class="breakdown-item breakdown-value" style="font-size: 140px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-right-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0);" />
             </ui:VisualElement>
             <ui:VisualElement name="Tomes" class="breakdown-container">
-                <ui:Label text="Tomes" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
-                <ui:Label text="50" display-tooltip-when-elided="true" name="TomesValue" class="breakdown-item breakdown-value" />
+                <ui:Label text="Tomes" display-tooltip-when-elided="true" name="Label" class="breakdown-item" style="font-size: 135px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-right-color: rgba(255, 255, 255, 0);" />
+                <ui:Label text="50" display-tooltip-when-elided="true" name="TomesValue" class="breakdown-item breakdown-value" style="font-size: 140px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-left-color: rgba(255, 255, 255, 0);" />
             </ui:VisualElement>
             <ui:VisualElement name="Deaths" class="breakdown-container">
-                <ui:Label text="Deaths" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
-                <ui:Label text="10" display-tooltip-when-elided="true" name="DeathsValue" class="breakdown-item breakdown-value" />
+                <ui:Label text="Deaths" display-tooltip-when-elided="true" name="Label" class="breakdown-item" style="font-size: 135px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-right-color: rgba(255, 255, 255, 0);" />
+                <ui:Label text="10" display-tooltip-when-elided="true" name="DeathsValue" class="breakdown-item breakdown-value" style="font-size: 140px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-right-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0);" />
             </ui:VisualElement>
             <ui:VisualElement name="Final" class="breakdown-container">
-                <ui:Label text="Final Score" display-tooltip-when-elided="true" name="Label" class="breakdown-item" />
-                <ui:Label text="1363" display-tooltip-when-elided="true" name="FinalValue" class="breakdown-item breakdown-value" />
+                <ui:Label text="Final Score" display-tooltip-when-elided="true" name="Label" class="breakdown-item" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 135px; border-right-color: rgba(255, 255, 255, 0);" />
+                <ui:Label text="1363" display-tooltip-when-elided="true" name="FinalValue" class="breakdown-item breakdown-value" style="font-size: 140px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); border-left-color: rgba(255, 255, 255, 0);" />
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="ScoreSubmit" class="submit-box">
             <ui:TextField picking-mode="Ignore" name="NameInput" class="submit-item" />
-            <ui:Button text="Submit Score" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" />
+            <ui:Button text="Submit" display-tooltip-when-elided="true" name="SubmitButton" class="submit-item" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 112px; border-top-left-radius: 3px; scale: 1 0.85;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
