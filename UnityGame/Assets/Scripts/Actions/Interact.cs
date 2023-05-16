@@ -7,7 +7,7 @@ public class Interact : PlayerAction
 
     protected override void OnActionStarted(CallbackContext context)
     {
-        Collider[] hit = Physics.OverlapBox(transform.position, new Vector3(1f, 2f, 1f), Quaternion.identity, interactMask);
+        Collider[] hit = Physics.OverlapBox(transform.position, new Vector3(0.5f, 1f, 0.5f), Quaternion.identity, interactMask, QueryTriggerInteraction.Collide);
         if (hit != null && hit.Length != 0)
         {
             hit[0].gameObject.GetComponent<Interactable>().Interact();

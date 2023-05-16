@@ -2,20 +2,26 @@ using UnityEngine;
 
 public class DisplayInteractPopup : MonoBehaviour
 {
+    private GameObject popup;
     private void Reset()
     {
         this.hideFlags = HideFlags.HideInInspector;
     }
 
+    private void Awake()
+    {
+        popup = Instantiate(Resources.Load<GameObject>("InteractPopup"));
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
-        // if (collision.CompareTag("Player"))
-        // TODO Display popup
+        if (collision.CompareTag("Player"))
+            popup.SetActive(true);
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        // if (collision.CompareTag("Player"))
-        // TODO Hide popup
+        if (collision.CompareTag("Player"))
+            popup.SetActive(false);
     }
 }

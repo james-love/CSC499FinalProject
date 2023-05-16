@@ -1,0 +1,25 @@
+.container {
+    width: 100%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 80px;
+}
+
+.popup {
+    background-image: url('project://database/Assets/Sprites/ScrollsEdit.psd?fileID=854780394&guid=d3d15ccfe6752a24380ca6a2ebfe3a45&type=3#ScrollsEdit');
+    width: 880px;
+    height: 313px;
+    padding-left: 130px;
+    padding-right: 130px;
+    padding-top: 66px;
+    padding-bottom: 60px;
+}
+
+.text {
+    width: 100%;
+    height: 100%;
+    -unity-text-align: middle-center;
+    font-size: 45px;
+    color: rgba(0, 0, 0, 255);
+}
