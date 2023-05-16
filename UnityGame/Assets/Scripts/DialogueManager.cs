@@ -42,12 +42,25 @@ public class DialogueManager : MonoBehaviour
         Dialogue.SetActive(true);
     }
 
+    void CloseDialogue()
+    {
+        Dialogue.SetActive(false);
+        interactInstructions.SetActive(true);
+    }
+
     private void Update()
     {
         if (inRange && Keyboard.current.eKey.wasPressedThisFrame)
         {
             Debug.Log("e key pressed");
-            ShowDialogue();
+            if (Dialogue.activeSelf)
+            {
+                CloseDialogue();
+            }
+            else 
+            {
+                ShowDialogue();
+            }
         }
     }
 }
