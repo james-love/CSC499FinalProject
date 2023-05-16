@@ -172,25 +172,24 @@ public class PlayerController : MonoBehaviour
     private void SafeGroundCheck()
     {
         timeSinceLastSafeGroundCheck = Mathf.Clamp(timeSinceLastSafeGroundCheck + Time.deltaTime, 0f, safegroundCheckFrequency);
+        bool GroundCheck(float offsetX, float offsetZ, out RaycastHit hit)
+        {
+            return Physics.Raycast(
+                new(transform.position.x + offsetX, transform.position.y + 0.05f, transform.position.z + offsetZ),
+                Vector3.down, out hit, 0.1f, groundLayers, QueryTriggerInteraction.Ignore);
+        }
+
         if
-        (
-            grounded &&
-            timeSinceLastSafeGroundCheck == safegroundCheckFrequency &&
-            Physics.Raycast(
-                new Vector3(transform.position.x + groundedRadius, transform.position.y + 0.05f, transform.position.z),
-                Vector3.down, out var hit1, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
-            Physics.Raycast(
-                new Vector3(transform.position.x - groundedRadius, transform.position.y + 0.05f, transform.position.z),
-                Vector3.down, out var hit2, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
-            Physics.Raycast(
-                new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z + groundedRadius),
-                Vector3.down, out var hit3, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
-            Physics.Raycast(
-                new Vector3(transform.position.x, transform.position.y + 0.05f, transform.position.z - groundedRadius),
-                Vector3.down, out var hit4, 0.1f, groundLayers, QueryTriggerInteraction.Ignore) &&
-            Mathf.Approximately(hit1.distance, hit2.distance) &&
-            Mathf.Approximately(hit2.distance, hit3.distance) &&
-            Mathf.Approximately(hit3.distance, hit4.distance))
+            (
+                grounded &&
+                timeSinceLastSafeGroundCheck == safegroundCheckFrequency &&
+                GroundCheck(groundedRadius, 0, out var hit1) &&
+                GroundCheck(-groundedRadius, 0, out var hit2) &&
+                GroundCheck(0, groundedRadius, out var hit3) &&
+                GroundCheck(0, -groundedRadius, out var hit4) &&
+                Mathf.Approximately(hit1.distance, hit2.distance) &&
+                Mathf.Approximately(hit2.distance, hit3.distance) &&
+                Mathf.Approximately(hit3.distance, hit4.distance))
         {
             lastSafeGroundedPosition = transform.position;
             timeSinceLastSafeGroundCheck = 0f;
