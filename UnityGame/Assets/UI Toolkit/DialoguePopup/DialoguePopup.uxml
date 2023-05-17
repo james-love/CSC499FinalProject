@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/DialoguePopup/DialoguePopup.uss?fileID=7433441132597879392&amp;guid=aab30d5d04e465949a2560b9f9c885b5&amp;type=3#DialoguePopup" />
     <ui:VisualElement name="Container" class="container">
         <ui:VisualElement name="Popup" class="popup" style="height: 320px;">
-            <ui:Label text="Sample Text&#10;Sample Text&#10;Sample Text" display-tooltip-when-elided="true" name="Text" class="text" />
+            <ui:Label text="Sample Text&#10;Sample Text&#10;Sample Text" display-tooltip-when-elided="true" name="Text" class="text" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 61px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

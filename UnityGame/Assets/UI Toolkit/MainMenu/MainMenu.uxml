@@ -1,8 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=4330b2a325a07de4b8f62f49c9f00ad7&amp;type=3#MainMenu" />
-    <ui:VisualElement name="Container" class="container">
-        <ui:Label text="Game Title" display-tooltip-when-elided="true" name="GameTitle" class="title" />
-        <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="button" />
+    <ui:VisualElement name="Container" class="container" style="background-image: url(&apos;project://database/Assets/Sprites/Scrolls.psd?fileID=2800000&amp;guid=0ce94ee3865787944946f9c72234b969&amp;type=3#Scrolls&apos;); -unity-slice-left: 0; -unity-slice-top: 0; -unity-slice-bottom: 193;">
+        <ui:Label text="Ascent&#10;Into&#10;Madness" display-tooltip-when-elided="true" name="GameTitle" class="title" style="background-image: none; -unity-background-scale-mode: stretch-to-fill; -unity-slice-left: 3; -unity-slice-top: 3; -unity-slice-right: 3; -unity-slice-bottom: 3; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 23px; -unity-text-align: upper-left; color: rgba(0, 0, 0, 255);" />
+        <ui:Button text="Start Game" display-tooltip-when-elided="true" name="StartGame" class="button" style="font-size: 63px;" />
         <ui:Button text="Exit Game" display-tooltip-when-elided="true" name="ExitGame" class="button" />
     </ui:VisualElement>
 </ui:UXML>
