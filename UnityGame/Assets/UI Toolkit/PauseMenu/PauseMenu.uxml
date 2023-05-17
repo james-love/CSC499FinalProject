@@ -1,21 +1,21 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/PauseMenu/PauseMenu.uss?fileID=7433441132597879392&amp;guid=6d57b7e8fa14caa4a8cab0d1e928848b&amp;type=3#PauseMenu" />
-    <ui:VisualElement name="Container" class="container" style="background-color: rgba(65, 65, 65, 0.58);">
-        <ui:Label text="Paused" display-tooltip-when-elided="true" name="Text" class="text" />
-        <ui:Button text="Resume" display-tooltip-when-elided="true" name="Resume" class="button pause-menu-buttons" />
-        <ui:Button text="Reload Save" display-tooltip-when-elided="true" name="ReloadSave" class="button pause-menu-buttons" style="display: none;" />
-        <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="MainMenu" tabindex="2" class="button pause-menu-buttons" style="display: none;" />
-        <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" tabindex="3" class="button pause-menu-buttons" />
+    <ui:VisualElement name="Container" class="container" style="background-color: rgba(0, 0, 0, 0.58);">
+        <ui:Label text="Paused" display-tooltip-when-elided="true" name="Text" class="text" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); font-size: 244px;" />
+        <ui:Button text="Resume" display-tooltip-when-elided="true" name="Resume" class="button pause-menu-buttons" style="background-color: rgba(0, 0, 0, 255); -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); color: rgba(112, 0, 197, 255); font-size: 100px; border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); -unity-text-outline-color: rgba(0, 0, 0, 0);" />
+        <ui:Button text="Reload Save" display-tooltip-when-elided="true" name="ReloadSave" class="button pause-menu-buttons" style="display: none; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); color: rgba(112, 0, 197, 255);" />
+        <ui:Button text="Main Menu" display-tooltip-when-elided="true" name="MainMenu" tabindex="2" class="button pause-menu-buttons" style="display: none; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;);" />
+        <ui:Button text="Quit" display-tooltip-when-elided="true" name="Quit" tabindex="3" class="button pause-menu-buttons" style="font-size: 100px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); background-color: rgba(0, 0, 0, 255); color: rgba(112, 0, 197, 255); -unity-background-image-tint-color: rgba(255, 255, 255, 0); border-left-color: rgba(255, 255, 255, 0); border-right-color: rgba(255, 255, 255, 0); border-top-color: rgba(255, 255, 255, 0); border-bottom-color: rgba(255, 255, 255, 0); -unity-text-outline-color: rgba(0, 0, 0, 0);" />
     </ui:VisualElement>
-    <ui:VisualElement name="VolumeControls" class="volume-control">
-        <ui:VisualElement name="MuteButtons" class="mute-button-container">
-            <ui:Button display-tooltip-when-elided="true" name="MuteMusic" tabindex="4" class="button mute-button" />
-            <ui:Button display-tooltip-when-elided="true" name="MuteSFX" tabindex="5" class="button mute-button" />
+    <ui:VisualElement name="VolumeControls" class="volume-control" style="background-color: rgba(112, 0, 197, 0); top: 17px; left: 47px;">
+        <ui:VisualElement name="MuteButtons" class="mute-button-container" style="background-color: rgba(5, 5, 5, 0);">
+            <ui:Button display-tooltip-when-elided="true" name="MuteMusic" tabindex="4" class="button mute-button" style="background-color: rgba(0, 0, 0, 255);" />
+            <ui:Button display-tooltip-when-elided="true" name="MuteSFX" tabindex="5" class="button mute-button" style="background-color: rgba(0, 0, 0, 255);" />
         </ui:VisualElement>
         <ui:Slider picking-mode="Ignore" value="0.5" high-value="1" name="VolumeLevel" tabindex="6" class="volume-slider" />
     </ui:VisualElement>
     <ui:VisualElement name="AlwaysRunContatiner" class="always-run-container">
-        <ui:Label text="Always Run?" display-tooltip-when-elided="true" class="always-run-label" style="margin-right: 20px;" />
+        <ui:Label text="Always Run?" display-tooltip-when-elided="true" class="always-run-label" style="margin-right: 20px; -unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); padding-top: 14px; color: rgba(255, 255, 255, 255);" />
         <ui:Toggle name="AlwaysRun" class="toggle" />
     </ui:VisualElement>
 </ui:UXML>
