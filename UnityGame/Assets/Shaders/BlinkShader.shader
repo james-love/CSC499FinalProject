@@ -7,7 +7,7 @@ Shader "Custom/BlinkShader"
     }
 
     SubShader {
-        Tags {"Queue"="Transparent" "RenderType"="Opaque"}
+        Tags {"RenderType"="Opaque" "Queue"="Transparent"}
 
         Pass {
             CGPROGRAM
@@ -35,8 +35,8 @@ Shader "Custom/BlinkShader"
                 return o;
             }
 
-            float4 frag () : SV_Target {
-                float4 color = lerp(float4(0.4, 0.4, 0.4, 1), float4(0.6, 0.6, 0.6, 1), sin(2 * _Time.y));
+            fixed4 frag (v2f i) : SV_Target {
+                fixed4 color = lerp(fixed4(0.4, 0.4, 0.4, 1.0), fixed4(0.6, 0.6, 0.6, 1.0), sin(2 * _Time.y));
                 return color;
             }
 
