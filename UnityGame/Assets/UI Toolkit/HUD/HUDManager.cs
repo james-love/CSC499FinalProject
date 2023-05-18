@@ -37,7 +37,7 @@ public class HUDManager : MonoBehaviour
     {
         TomesCollected += 1;
         root.Q<Label>("TomeCounter").text = $"Tomes: {TomesCollected}";
-        if (TomesCollected == 1) // TODO set to 4
+        if (TomesCollected == 4)
             StartCoroutine(OpenDoor());
     }
 

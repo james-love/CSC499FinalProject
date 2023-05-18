@@ -10,6 +10,7 @@ public class Tome : MonoBehaviour
         {
             collected = true;
             HUDManager.Instance.TomeCollected();
+            AudioManager.Instance.PlayOneShot(FMODEvents.Instance.TomeCollected, transform.position);
             Destroy(gameObject); // TODO: Replace with animation
         }
     }

@@ -20,6 +20,12 @@ public class AudioManager : MonoBehaviour
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 
+    public void PlayMusic(EventReference sound)
+    {
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        InitializeMusic(sound);
+    }
+
     public void PlayOneShotWithParameters(EventReference sound, Vector3 worldPos, string parameterName, float parameterValue)
     {
         EventInstance instance = RuntimeManager.CreateInstance(sound);

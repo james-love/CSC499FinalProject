@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c3bf7899-f10c-403e-84f3-21eac027fb3e}">
+		<property name="assetPath">
+			<value>player_Hurt_004.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.71691609977324267</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c6089e8d-6331-4372-8871-4212a2eb7af0}</destination>
+		</relationship>
+	</object>
+</objects>

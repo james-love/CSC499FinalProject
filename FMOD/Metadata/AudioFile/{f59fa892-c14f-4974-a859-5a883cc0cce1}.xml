@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{f59fa892-c14f-4974-a859-5a883cc0cce1}">
+		<property name="assetPath">
+			<value>Tome_Nearby_Loop_001.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.8037916666666662</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c6089e8d-6331-4372-8871-4212a2eb7af0}</destination>
+		</relationship>
+	</object>
+</objects>

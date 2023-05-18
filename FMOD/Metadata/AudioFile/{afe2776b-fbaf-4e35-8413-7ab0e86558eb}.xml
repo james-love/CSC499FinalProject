@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{afe2776b-fbaf-4e35-8413-7ab0e86558eb}">
+		<property name="assetPath">
+			<value>Ending_Theme_001.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>54.65539583333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{c6089e8d-6331-4372-8871-4212a2eb7af0}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -41,6 +41,7 @@ public class EnemyAI : Enemy
             StartCoroutine(EnemyFlash());
             if (currentHealth == 0)
             {
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.EnemyDeath, transform.position);
                 if (gameObject.name != "TheBoss")
                 {
                     animator.SetTrigger("Die");
@@ -50,7 +51,12 @@ public class EnemyAI : Enemy
                 else
                 {
                     StartCoroutine(GameEnd());
+                    AudioManager.Instance.PlayMusic(FMODEvents.Instance.EndThemMusic);
                 }
+            }
+            else
+            {
+                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.EnemyHit, transform.position);
             }
         }
     }
@@ -115,6 +121,7 @@ public class EnemyAI : Enemy
                 {
                     attacking = true;
                     playerHit = false;
+                    AudioManager.Instance.PlayOneShot(FMODEvents.Instance.EnemyAttack, transform.position);
                     currentState = EnemyState.Attack;
                     animator.SetTrigger("Attack");
                 }
