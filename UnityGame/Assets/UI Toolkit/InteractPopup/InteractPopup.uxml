@@ -1,4 +1,4 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/InteractPopup/InteractPopup.uss?fileID=7433441132597879392&amp;guid=f561fe0d65de8e443abd62222f19f3f1&amp;type=3#InteractPopup" />
-    <ui:Label text="Press E to Interact" name="Popup" class="popup" style="-unity-font-definition: url(&apos;project://database/Assets/Fonts.UI/Roman_New_Times.asset?fileID=11400000&amp;guid=d614eaf33ea30024d9106ff8ce083932&amp;type=2#Roman_New_Times&apos;); color: rgba(255, 255, 255, 255);" />
+    <ui:Label text="Press E to Interact" name="Popup" class="popup" />
 </ui:UXML>

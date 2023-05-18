@@ -1,0 +1,16 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/HUD/HUD.uss?fileID=7433441132597879392&amp;guid=b4f90e8a94ca713408a306e77dd84184&amp;type=3#HUD" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:VisualElement name="TopRow" class="top-row" style="justify-content: flex-start;">
+            <ui:VisualElement class="col">
+                <ui:Label text="Tomes: 0" name="TomeCounter" class="hud-text" />
+            </ui:VisualElement>
+            <ui:VisualElement class="col">
+                <ui:ProgressBar value="5" high-value="5" name="Health" class="health" />
+            </ui:VisualElement>
+            <ui:VisualElement class="col">
+                <ui:Label text="00:00" name="Timer" class="hud-text" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

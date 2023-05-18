@@ -15,7 +15,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
-    motionNodeName: 
+    motionNodeName: <Root Transform>
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
@@ -33,19 +33,19 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: enemyIdle
+      name: EnemyIdle
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 300
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -526,13 +526,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Enemy(Clone)
+    - name: EnemyRiggedModel(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: group1
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: 1.6623896, y: 0.8951144, z: -0.03951749}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -557,7 +557,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: HumanBody1:humanBody
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -567,7 +567,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: polySurface351
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: 0.077095136, y: 1.2648157, z: 0.17849155}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -577,7 +577,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: FantasyHelmet:Helmet
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: -0, y: 0, z: -0.0031169474}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1.2989963, y: 1, z: 1.0043638}
@@ -587,7 +587,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LongsleeveThickSweater:LongsleeveThickSweater
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: 0.1698312, y: 1.2089593, z: 0.13339676}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1.0218173, y: 1.0218173, z: 1.0218173}
@@ -597,7 +597,7 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: LongsleeveThickSweater:LongsleeveThickSweater1
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: 0.0032608467, y: 1.3701901, z: 0.05155737}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -607,12 +607,12 @@ ModelImporter:
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: polySurface36
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: Enemy(Clone)
+      parentName: EnemyRiggedModel(Clone)
       position: {x: -0.000011523554, y: 1.1261911, z: 0.011377511}
       rotation: {x: 0.0000025088427, y: -0.0000012542007, z: 0.00008729164, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -948,7 +948,7 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 82ef7589801e3f64f942814ae9fda37d,
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 7e22c2801a8055d4d9bfdd1f5650399d,
     type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3

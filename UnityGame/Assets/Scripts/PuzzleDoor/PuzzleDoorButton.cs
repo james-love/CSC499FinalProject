@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class PuzzleDoorButton : Interactable
 {
+    private bool active = false;
     public delegate void PuzzleButtonPressed(PuzzleDoorButton button);
     public event PuzzleButtonPressed OnPuzzleButtonPressed;
-
-    private bool active = false;
     private ParticleSystem activeEffect;
 
     public override void Interact()

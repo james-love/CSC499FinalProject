@@ -16,8 +16,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("How fast the character turns to face movement direction")]
     [Range(0.0f, 0.3f)]
     [SerializeField] private float rotationSmoothTime = 0.12f;
-    [Tooltip("Rotation speed of the character in 1st person")]
-    [SerializeField] private float rotationSpeed = 1.0f;
 
     [Tooltip("Acceleration and deceleration")]
     [SerializeField] private float speedChangeRate = 10.0f;
@@ -90,31 +88,21 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float safegroundCheckFrequency = 1f;
     private float timeSinceLastSafeGroundCheck;
 
-    // counter to keep track of how many tomes have been collected
-    public int TomesCollected { get; set; } = 0;
-
-    public void Teleport(Vector3 newPosition)
+    public void Teleport(Vector3 newPosition, float? rotation = null)
     {
         transform.position = newPosition;
+        if (rotation != null)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, rotation ?? 0f, transform.rotation.eulerAngles.z);
+            cinemachineTargetYaw = rotation ?? cinemachineTargetYaw;
+        }
+
         Physics.SyncTransforms();
     }
 
     public void ResetPos()
     {
-        LevelManager.Instance.Pause();
         Teleport(lastSafeGroundedPosition);
-        LevelManager.Instance.Resume();
-    }
-
-    // function to update the tome counter (connected to Tome and UIManager scripts)
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Tome"))
-        {
-            TomesCollected += 1;
-            UIManager.Instance.updateCounter(TomesCollected);
-            Destroy(other.gameObject);
-        }
     }
 
     private void Awake()

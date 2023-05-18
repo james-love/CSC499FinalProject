@@ -6,18 +6,18 @@ public class ScoreScreen : MonoBehaviour
 {
     private readonly string placeHolderText = "Input name...";
     private VisualElement root;
-    private float startTime;
+    private int totalTomes = 0;
 
     public void Open()
     {
-        LevelManager.Instance.Pause();
+        HUDManager.Instance.Pause();
+        UpdateDisplay();
         root.style.display = DisplayStyle.Flex;
     }
 
     private void Awake()
     {
         HS.Init(this, "Ascent into Madness");
-        startTime = Time.time;
 
         root = GetComponent<UIDocument>().rootVisualElement;
 
@@ -28,22 +28,20 @@ public class ScoreScreen : MonoBehaviour
 
         Button submitButton = root.Q<Button>("SubmitButton");
         submitButton.clicked += SubmitScore;
+
+        totalTomes = GameObject.FindGameObjectsWithTag("Tome").Length;
     }
 
     private void UpdateDisplay()
     {
-        int elapsedTime = Mathf.FloorToInt(Time.time - startTime);
-        int minutes = elapsedTime / 60;
-        int seconds = elapsedTime % 60;
+        float elapsedTime = HUDManager.Instance.Timer;
+        int deaths = HealthManager.Instance.DeathCount;
+        int tomes = HUDManager.Instance.TomesCollected;
 
-        int deaths = 0;
-        int tomes = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().TomesCollected;
-        int maxTomes = 8;
-
-        root.Q<Label>("TimeValue").text = $"{minutes}:{seconds}";
-        root.Q<Label>("TomesValue").text = $"{tomes}/{maxTomes}";
+        root.Q<Label>("TimeValue").text = $"{elapsedTime / 60:00}:{elapsedTime % 60:00}";
+        root.Q<Label>("TomesValue").text = $"{tomes}/{totalTomes}";
         root.Q<Label>("DeathsValue").text = deaths.ToString();
-        root.Q<Label>("FinalValue").text = Mathf.Clamp(20_000 - (deaths * 100) - (elapsedTime * 10) - ((maxTomes - tomes) * 25), 0, 20_000).ToString();
+        root.Q<Label>("FinalValue").text = Mathf.Clamp(20_000 - (deaths * 100) - (Mathf.FloorToInt(elapsedTime) * 10) - ((totalTomes - tomes) * 25), 0, 20_000).ToString();
     }
 
     private void SubmitScore()

@@ -14,7 +14,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Open()
     {
-        LevelManager.Instance.Pause();
+        HUDManager.Instance.Pause();
         UpdateVolumeDisplay();
         root.style.display = DisplayStyle.Flex;
     }
@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
         root.Q<Button>("Resume").RegisterCallback<ClickEvent>(_ =>
         {
             root.style.display = DisplayStyle.None;
-            LevelManager.Instance.Resume();
+            HUDManager.Instance.Resume();
         });
 
         root.Q<Button>("MuteMusic").RegisterCallback<ClickEvent>(_ =>

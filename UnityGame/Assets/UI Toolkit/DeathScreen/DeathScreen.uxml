@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/DeathScreen/DeathScreen.uss?fileID=7433441132597879392&amp;guid=9c3edb43f75a7f24792da3b3e595db2e&amp;type=3#DeathScreen" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:Label text="You Died" name="YouDied" class="text" />
+        <ui:Button text="Continue" name="Continue" class="button" />
+        <ui:Button text="Quit" name="Quit" class="button" />
+    </ui:VisualElement>
+</ui:UXML>

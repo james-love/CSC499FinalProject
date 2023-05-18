@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PuzzleDoor : MonoBehaviour
 {
@@ -26,7 +26,7 @@ public class PuzzleDoor : MonoBehaviour
     {
         if (ButtonsMatch())
         {
-            Destroy(gameObject); // TODO put the animation here
+            GetComponent<Animator>().SetTrigger("Open");
         }
         else
         {
@@ -47,6 +47,7 @@ public class PuzzleDoor : MonoBehaviour
             if (pressedButtons[i] != buttonOrder[i])
                 return false;
         }
+
         return true;
     }
 }

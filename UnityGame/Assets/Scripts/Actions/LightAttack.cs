@@ -16,6 +16,7 @@ public class LightAttack : PlayerAction
     private IEnumerator AttackAnimation()
     {
         sword.Attacking = true;
+        sword.CurrentDamage = 1;
         playerAnimator.SetBool("LightAttack", true);
         playerAnimator.SetTrigger("SwordSlash");
         yield return new WaitUntil(() => Utility.AnimationFinished(playerAnimator, "LightSlash", 1));

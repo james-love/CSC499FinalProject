@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -30,6 +28,7 @@ public class MainMenu : MonoBehaviour
 
     private void AddHoverSound(Button btn)
     {
+        // TODO Hover sound
         //btn.RegisterCallback<MouseOverEvent>(_ => AudioManager.Instance.PlayOneShot(FMODEvents.Instance.OneShotTest, Vector3.zero));
     }
 }
