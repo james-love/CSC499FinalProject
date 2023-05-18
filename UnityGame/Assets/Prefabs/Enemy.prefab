@@ -1007,6 +1007,8 @@ MonoBehaviour:
   sightRange: 10
   attackRange: 1.5
   currentState: 0
+  flashMaterial: {fileID: 2100000, guid: 767b8b3def1d13745823931879875f84, type: 2}
+  scoreScreen: {fileID: 0}
 --- !u!143 &8544294891098462380
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1948,6 +1950,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onTriggerStay:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7890895942663044108
 GameObject:
   m_ObjectHideFlags: 0

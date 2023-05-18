@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public enum EnemyState
@@ -17,23 +18,40 @@ public class EnemyAI : Enemy
     [SerializeField] private float attackRange = 1.5f;
     private int currentHealth;
     [SerializeField] private EnemyState currentState = EnemyState.Idle;
+    [SerializeField] private Material flashMaterial;
+    [SerializeField] private ScoreScreen scoreScreen; // Only need to assign for the boss
     private CharacterController controller;
     private Animator animator;
     private Transform playerTransform;
+    private SkinnedMeshRenderer enemyMesh;
 
     private bool playerSpotted = false;
     private bool attacking = false;
     private bool playerHit = false;
+    private bool invulnerable = false;
 
     public override void Hit(int damageValue)
     {
-        // TODO enemy hit graphics and sound here
-        currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, totalHealth);
-        if (currentHealth == 0)
+        if (!invulnerable)
         {
-            animator.SetTrigger("Die");
-            controller.enabled = false;
-            currentState = EnemyState.Dead;
+            invulnerable = true;
+            StartCoroutine(InvulnerableTime());
+            // TODO enemy hit graphics and sound here
+            currentHealth = Mathf.Clamp(currentHealth - damageValue, 0, totalHealth);
+            StartCoroutine(EnemyFlash());
+            if (currentHealth == 0)
+            {
+                if (gameObject.name != "TheBoss")
+                {
+                    animator.SetTrigger("Die");
+                    controller.enabled = false;
+                    currentState = EnemyState.Dead;
+                }
+                else
+                {
+                    StartCoroutine(GameEnd());
+                }
+            }
         }
     }
 
@@ -46,12 +64,36 @@ public class EnemyAI : Enemy
         }
     }
 
+    private IEnumerator GameEnd()
+    {
+        animator.SetTrigger("Die");
+        controller.enabled = false;
+        currentState = EnemyState.Dead;
+        yield return new WaitUntil(() => Utility.AnimationFinished(animator, "EnemyDeath"));
+        scoreScreen.Open();
+    }
+
+    private IEnumerator EnemyFlash()
+    {
+        var oldMaterial = enemyMesh.material;
+        enemyMesh.material = flashMaterial;
+        yield return new WaitForSeconds(0.3f);
+        enemyMesh.material = oldMaterial;
+    }
+
+    private IEnumerator InvulnerableTime()
+    {
+        yield return new WaitForSeconds(1.5f);
+        invulnerable = false;
+    }
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         currentHealth = totalHealth;
+        enemyMesh = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     private void Update()

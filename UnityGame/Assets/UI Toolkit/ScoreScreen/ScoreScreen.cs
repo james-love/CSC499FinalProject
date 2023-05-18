@@ -1,4 +1,5 @@
 using HighScore;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -48,6 +49,13 @@ public class ScoreScreen : MonoBehaviour
     {
         TextField name = root.Q<TextField>("NameInput");
         if (!string.IsNullOrWhiteSpace(name.value) && name.value != placeHolderText && int.TryParse(root.Q<Label>("FinalValue").text, out int score))
+        {
             HS.SubmitHighScore(this, name.value, score);
+#if UNITY_EDITOR
+            EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
     }
 }
