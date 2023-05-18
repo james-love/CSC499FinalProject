@@ -5,7 +5,15 @@ using UnityEngine.InputSystem;
 
 public class KillEnemy : MonoBehaviour
 {
-    public bool playerNearby;
+    private bool playerNearby;
+
+    // animator to play enemy death
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -27,7 +35,12 @@ public class KillEnemy : MonoBehaviour
     {
         if (Keyboard.current.mKey.wasPressedThisFrame && playerNearby == true)
         {
+            // do enemy death animation here (IF they're a one hit kill)
             Destroy(this.gameObject);
+
+            // if not one hit kill,
+            // heavy attack = insta kill enemies but takes longer to swing, would play enemy death animation here
+            // light attack = no insta kill but faster, plays enemy recoil/got hit animation here 
         }
     }
 }
