@@ -14,7 +14,6 @@ public class NPC : Interactable
     public override void Interact()
     {
         popup.Display();
-        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.UIOpen, transform.position);
     }
 
     private void Awake()

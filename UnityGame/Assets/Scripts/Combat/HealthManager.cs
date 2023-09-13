@@ -25,10 +25,6 @@ public class HealthManager : MonoBehaviour
                 invulnerable = true;
                 StartCoroutine(PlayerDeath());
             }
-            else
-            {
-                AudioManager.Instance.PlayOneShot(FMODEvents.Instance.PlayerHit, playerAnimator.transform.position);
-            }
         }
     }
 
@@ -67,7 +63,6 @@ public class HealthManager : MonoBehaviour
         DeathCount += 1;
         HUDManager.Instance.Pause(false);
         playerAnimator.SetTrigger("Die");
-        AudioManager.Instance.PlayOneShot(FMODEvents.Instance.PlayerDeath, playerAnimator.transform.position);
         yield return new WaitUntil(() => Utility.AnimationFinished(playerAnimator, "Dead", 3));
         Time.timeScale = 0;
         root.style.display = DisplayStyle.Flex;

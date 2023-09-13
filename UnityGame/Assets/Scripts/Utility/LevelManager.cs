@@ -49,30 +49,7 @@ public class LevelManager : MonoBehaviour
             }
         }
 
-        SetLevelMusic(waypoint);
-
         fadeTransition.SetTrigger("Loaded");
         HUDManager.Instance.Resume();
-    }
-
-    private void SetLevelMusic(int waypoint)
-    {
-        switch (waypoint)
-        {
-            case 1:
-                AudioManager.Instance.PlayMusic(FMODEvents.Instance.Level01Music);
-                break;
-            case 2:
-                AudioManager.Instance.PlayMusic(FMODEvents.Instance.Level02Music);
-                break;
-            case 3:
-                AudioManager.Instance.PlayMusic(FMODEvents.Instance.Level02Music);
-                break;
-            case 4:
-                AudioManager.Instance.PlayMusic(FMODEvents.Instance.Level03Music);
-                break;
-            default:
-                break;
-        }
     }
 }
